@@ -1,1 +1,23 @@
-this is a text!
+Chapter 01 - The Vim Way
+
+The dot (.) command. (It repeates the last command, ACTUALLY, not the last command, but last CHANGE!).
+
+It seems like a simple command, but understand it is the first step into Vim mastery.
+
+First question we need to ask: what is a change?
+
+That simple defniniton is the kernel of Vim's Modal model. 
+
+A change could be at character, line or entire file level.
+
+For example, when using x to delete a char under the cursor, using the dot command will repeat that change.
+
+Another example, if we use the dd comand to delete the line where the cursor is, using the dot command after that will repeat that change, it will again delete the line under the cursor.
+
+We can also kinda do that in insert mode, because from the moment you press i or a until you press <Esc>, every key stroke is recorded. So, if you press the dot right after <Esc>, this will redo the input you did in Insert Mode. 
+
+The dot command is like a micro macro. 
+
+Tip 2: Don't Repeat Yourself
+
+
