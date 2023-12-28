@@ -1,4 +1,40 @@
 \documentclass{article}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=C++,
+    aboveskip=1mm,
+    belowskip=1mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4
+}
+
 \begin{document}
 This is a test. Still a test.
+\begin{lstlisting}
+    #include<stdio.h>
+
+    // This is a comment.
+    // This is another comment.
+    // Yet another comment.
+    int main()
+    {
+        printf("Hello!\n");
+    }
+\end{lstlisting}
 \end{document}
