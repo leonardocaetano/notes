@@ -99,7 +99,7 @@ steely_dan.remove(item_to_remove)
 
 print(steely_dan)
 
-# NOTE: the remove() method only remove the first appearence of a element, you need to use a loop to make sure all elements that are the same is remove
+# @NOTE: the remove() method only remove the first appearence of a element, you need to use a loop to make sure all elements that are the same is remove
 
 # for last, you can manually change a specific element of the list
 
@@ -112,7 +112,7 @@ print(steely_dan)
 steely_dan.sort(reverse=True)
 print(steely_dan)
 
-# vim note: when in visual mode, the cursor position is also selected
+# vim @NOTE: when in visual mode, the cursor position is also selected
 # the pasting happens after the cursor, and below!!!
 
 # back to lists: yeah, there's a lot of methods you can apply to it... reverse, sort, len, sorted...
@@ -127,7 +127,7 @@ ye = ['cd', 'lr', 'grad', '808s', 'mbdtf', 'yee', 'pablo', 'jik', 'd', 'd2']
 for record in ye:  # the record variable gets created here
     print(record)
 
-for record in ye:  # well, i guess that it is also impotant to note that this range is [inclusive]
+for record in ye:  # well, i guess that it is also impotant to @NOTE that this range is [inclusive]
     print(f"{record.title()}, what a record!")
     print(f"{record.title()}, what a record again!") # the loop happens on whatever is indented
 
