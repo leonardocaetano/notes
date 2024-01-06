@@ -2,9 +2,6 @@
 
 # in python a variable is a not a box, but a _label_ (a pointer? a reference?)
 
-from re import A
-
-
 first_name = 'ada'
 second_name = 'lovelace'
 
@@ -23,7 +20,7 @@ print(with_prefix.removeprefix('abc.'))
 # so... we can see that python has various methods to dealing with strings, stuff like .title(),
 # .captilize(), etc... they don't alter the original strings
 
-# the difference between single and double quotes:
+# the difference between single and double quotes
 
 # single_string = 'This is a 'single' quote string.'
 double_string = "This is a 'double' quote string."
@@ -277,4 +274,131 @@ else:
 
 # ---- CHAPTER 6 = DICTIONARIES ----
 
+# this allows you to connect releated pieces of information
 
+enemy = { 'color' : 'green', 'health' : 5, 30 : 'oba-oba'} 
+
+# so... lists [], tulpes (), dictionaries {:}, sets{} (without keys)
+
+print(enemy['health'])
+print(enemy['color'])
+print(enemy[30])
+# print(enemy['green']) # nor this
+# print(enemy[5]) # this doesnt work, but
+
+
+# dictionaries are a key-value list, where the first value is the key we use to reference it, and the second value is the information itself
+# both key and values can be a string or a number
+# they can also be a list, a tulpa or even other dictionary as a value
+
+# we can also add new values to a dictionary like this
+
+enemy['class'] = 'bard'
+print(enemy['class'])
+
+# this just print the entire dictionary
+print(enemy)
+
+# this declares a empty dictionary
+new_enemy = {}
+
+# interacting with dicts
+
+alien_0 = {'color' : 'green', 'class' : 'sorcerer', 'speed' : 'medium', 'x_pos' : 3, 'y_pos' : 2}
+
+print(f"This alien has a speed of {alien_0['speed']} now.")
+print(f"This means he is at x_pos: {alien_0['x_pos']}.")
+
+if alien_0['speed'] == 'slow':
+    x_increment = 1
+elif alien_0['speed'] == 'medium':
+    x_increment = 2
+else:
+    x_increment = 3
+
+alien_0['x_pos'] += x_increment
+
+print(f"But now he is at x_pos: {alien_0['x_pos']}.")
+
+# we can delete a key-pair from a dict
+
+print(alien_0)
+
+del alien_0['class']
+
+print(alien_0)
+
+# we can also break a dict in multiple files
+
+favorite_records = {
+        'jen' : 'white_album',
+        'joão' : 'clube_da_esquina',
+        'joseph' : '77_live',
+        }
+
+# of course, python being picky about identation, we cannot place the open bracket on the line below the indentifier
+
+# anyways, python has a bunch of things to diagnose errors that we will learn after, but we do have the get() method for dicts
+
+class_value = alien_0.get('class', 'alien_0 does not have a class anymore. :(')
+print(class_value)
+
+# as you can see, the first argument for get() is a key, and the second one is error string
+
+# we can loop through dicts, as long you dont forget the .items() method
+
+for key, value in alien_0.items(): # we can choose any names for key, value
+    print(f"Key = {key}")
+    print(f"Value = {value}")
+
+for key in alien_0.keys(): # we also can just use the keys() or values() methods
+    print(f"Key = {key}")
+
+for key in alien_0: # these last two loops does the same thing
+    print(f"Key = {key}")
+
+for key in sorted(alien_0.keys()): # we can also use sorted() this way
+    print(key.title())
+
+
+favorite_records = {
+        'jen' : 'white_album',
+        'joão' : 'clube_da_esquina',
+        'joão' : 'clube_da_esquina',
+        'joseph' : '77_live',
+        }
+
+for key, value in favorite_records.items():
+    print(f"Key: {key}, Value: {value}")
+
+print("with set()")
+
+for key, value in set(favorite_records.items()):
+    print(f"Key: {key}, Value: {value}")
+
+# we can nest dicts and lists
+
+# this is like a array of structs
+
+aliens = []
+
+for n in range(30):
+    alien_model = {'color' : 'red', 'speed' : 'medium', 'class' : 'figher'}
+    aliens.append(alien_model)
+
+print(aliens)
+
+# we can also do 'structs of arrays':
+
+print("\n\n\n")
+
+pizza = {
+        'crust' : 'thick',
+        'toppings' : ['mocoto', 'aipim'],
+        }
+
+print(pizza)
+
+# you can nest a dict inside another dict, but you code might get complicated real soon(tm)
+
+# CHAPTER 7 = USER INPUTS AND WHILE LOOPS
