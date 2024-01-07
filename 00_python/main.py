@@ -456,4 +456,66 @@ while i <= 5:
 
 # CHAPTER 8: functions
 
+def people_interests(): # defines the function
+    responses = {}
+    polling_active = True
+    while polling_active:
+        name = input("\nWhat is our name? ")
+        response = input("What you like? ")
+        responses[name] = response
+        repeat = input("Is there other person? (yes/no) ")
+        if repeat == 'no':
+            polling_active = False
+    print(" --- POLL RESPONSES --- ")
+    for name, response in responses.items():
+        print(f"The person {name.title()} likes {response.title()}.")
+
+# people_interests() # calls the function
+
+# ofc, you can have arguments for a function
+
+# the common way:
+
+def animal_and_owner(animal='octopus', owner='beatle', age=None): 
+    # note that we defined default values, but they are optional, the age argument is made
+    # optional with the none
+    if age:
+        phrase = f"Your animal is {animal.title()} and your name is {owner.title()}, and you are {age} years old."
+    else:
+        phrase = f"Your animal is {animal.title()} and your name is {owner.title()}."
+    return phrase
+
+print(animal_and_owner('dog', 'john'))
+print(animal_and_owner('cat', 'paul', '29'))
+
+# but you also can do a name-value pair with keyword arguments
+# you specify this on a function call
+
+print(animal_and_owner(animal='parrot', owner='george'))
+print(animal_and_owner(owner='ringo', age='30')) # and if the function was defined with default values, we can ommit the arguments in a funciton call
+
+# ofc, you can pass and rerturn lists and dictionaries
+# we can also modify them inside a function
+
+# you can prevent a function to modify a list by appending [:] in the end
+# function_name(list_name[:])
+# you can also have a arbitraty number of arguments using the * operator, also called *args
+
+def albums(*record):
+    print(record)
+
+albums('dsotm', 'abbey_road', 'mbdtf')
+
+# there's also **, also called **kargs but we need to learn they later
+# we can also store your functions in modules (that in fact are just other files), that you include using import
+# you can just do module_name.function_name(), were module_name is just the file_name.py 
+# you can also do
+# from module_name import function_name
+# from module_name import *
+# import module_name 
+# import module_name as mn
+# from module_name import function_name as alias
+# and then you call alias()
+
+# CHAPTER 9: CLASSES
 
