@@ -402,3 +402,58 @@ print(pizza)
 # you can nest a dict inside another dict, but you code might get complicated real soon(tm)
 
 # CHAPTER 7 = USER INPUTS AND WHILE LOOPS
+
+#this_is_a_input = input("Please input something: ")
+#print(this_is_a_input)
+#
+#input_text = "Please input something again: "
+#new_input = input(input_text) 
+#
+#print(f"Your input was: {new_input}")
+
+# the input function treats every input as a string, to get a numeral input, use the int() function
+
+#age = input("Age: ")
+#print(f"New age: {int(age) + 13}")
+
+# the modulo operator - % - is also available on python
+
+# the while loop:
+
+i = 0;
+
+while i <= 5:
+    print(i)
+    i += 1
+
+#message = "Write a input, while the input != 'quit', it will spit out what you entered. "
+#print(message)
+#
+#user_input = ""
+#
+#while user_input != 'quit':
+#    user_input = input('Enter something: ')
+#    print(f"You entered: {user_input}")
+
+# ofc, we can use the True and False flags with while looops.
+# continue is available as well
+# and you can use while loops with lists and dictionaries too
+
+#responses = {}
+#polling_active = True
+#
+#while polling_active:
+#    name = input("\nWhat is our name? ")
+#    response = input("What you like? ")
+#    responses[name] = response
+#    repeat = input("Is there other person? (yes/no)")
+#    if repeat == 'no':
+#        polling_active = False
+#
+#print(" --- POLL RESPONSES --- ")
+#for name, response in responses.items():
+#    print(f"The person {name.title()} likes {response.title()}.")
+
+# CHAPTER 8: functions
+
+
