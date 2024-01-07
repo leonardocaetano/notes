@@ -519,3 +519,80 @@ albums('dsotm', 'abbey_road', 'mbdtf')
 
 # CHAPTER 9: CLASSES
 
+# the book tries to evangelise OOP here, 
+# so, in OOP you create classes "that represents real-world _things_" and objects based on these classes 
+# when you create a class you define the general behavior that a whole category of objects will have
+
+# when you create a object over a class, this is called _instantiation_
+# and you work with instances of a class
+
+class dog: # THE FUNCTION THAT IS PART OF A CLASS IS CALLED A METHOD
+    # the __init()__ method is a special one that runs automatically everytime we __CREATE__ a object (or a new instance) based on a class
+    # the self parameter is also special and required, it needs to be the first one
+    # every variable prefixed with self will be accessible for every method in the class
+    def __init__(self, name, age): 
+        self.name = name
+        self.age = age
+        print("This is being exec now.")
+    def sit(self):
+        print(f"{self.name} has {self.age} and now is sitting.")
+    def roll_over(self):
+        print(f"{self.name} has {self.age} and now is rolling over.")
+my_dog = dog("João", 10)
+
+my_dog.sit()
+my_dog.roll_over()
+
+# you can also do:
+
+print(f"my_dog name is {my_dog.name} and his age is {my_dog.age}.")
+
+my_other_dog = dog("Pedro", 15)
+
+# and that are the basics of it. but there's more.
+
+# INHERITANCE
+
+# we always can start a new class from scratch, but we are also able to inherit a child class that provides specialized functionality
+
+class electric_dog(dog):
+    def __init__(self, name, age, battery):
+        self.battery = battery
+        super().__init__(name, age) 
+    def battery_information(self):
+        print(f"{self.name} has {self.age} and his battery points is {self.battery}.")
+    def roll_over(self):
+        print(f"{self.name} has {self.age} and now is rolling over even more!")
+
+my_e_dog = electric_dog("Joaquim", 20, 65)
+
+my_e_dog.sit()
+my_e_dog.roll_over()
+my_e_dog.battery_information()
+
+# super() thing on the __init__ method is a special function that allows you to call a method from a parent class. the name super comes from calling a
+# convention of calling a parent class a superclass and a child subclass 
+# in this case we are calling the __init__ method, but we could call any others my_e_dog = electric_dog("Joaquim", 20, 50)
+# we overide a method from a parent class just by redefining it
+
+# you can also import a class from other file using
+# from dog import electric_dog 
+# where dog is a dog.py file, which are also called a MODULEA
+# ofc we can also just do
+# from dog import *
+# annnnnd offfc you can import a module into a module, but that doesnt metter rn
+
+# THE PYTHON STD LIB
+
+# yes, there's one
+
+# there are funtionality that is available in every python installation
+# and you can have more by using pip
+
+from random import randint
+from random import choice
+
+print(randint(1, 6)) # this gives you a random number everytime you run it
+print(choice(ye))    # this gives you a random record everytime you run it
+
+# CHAPTER 10: FILES AND EXCEPTIONS
