@@ -603,33 +603,37 @@ print(choice(ye))    # this gives you a random record everytime you run it
 
 from pathlib import Path
 
-print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_digits.txt').read_text())
-print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_digits.txt').read_text().rstrip()) # this is called method chaining
-# print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_million_digits.txt').read_text())
-
+try:
+    print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_digits.txt').read_text())
+    print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_digits.txt').read_text().rstrip()) # this is called method chaining
+    # print(Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_million_digits.txt').read_text())
+except:
+    print("Couldn't find the file")
 # remember that on windows we need change to foward slash
 
 ############ - HOW TO READ A FILE - ################
 
-# #01: stores the path of the file on a variable
-pi_mi = Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_million_digits.txt') 
-print(pi_mi)
-
-# #02: reads the text
-content = pi_mi.read_text() 
-print(content)
-
-# #03: the splitlines() method split lines into a list
-lines = content.splitlines()  
-print(lines)
-
-# 04: the lstrip() removes left spaces from a string (that's why we need to make a loop)
-# this loops also get back to join everything back to a string
-pi_string = ''
-for line in lines:
-    pi_string += line.lstrip()
-print(pi_string)
-
+try:
+    # #01: stores the path of the file on a variable
+    pi_mi = Path('C:/Users/LEO/Desktop/pcc_3e-main/chapter_10/reading_from_a_file/pi_million_digits.txt') 
+    print(pi_mi)
+    
+    # #02: reads the text
+    content = pi_mi.read_text() 
+    print(content)
+    
+    # #03: the splitlines() method split lines into a list
+    lines = content.splitlines()  
+    print(lines)
+    
+    # 04: the lstrip() removes left spaces from a string (that's why we need to make a loop)
+    # this loops also get back to join everything back to a string
+    pi_string = ''
+    for line in lines:
+        pi_string += line.lstrip()
+    print(pi_string)
+except: 
+    print("Couldn't find the file")
 # 05: you can search for a smaller string in a bigger one by just doing a simple loop like this
 
 #bday = input("Enter your b-day on the format ddmmyyyy: ")
@@ -641,15 +645,19 @@ print(pi_string)
 ############ - HOW TO READ A FILE - ################
 
 # how to access lines
-contents = Path('C:/home/misc/file.txt').read_text() # this is called method chaining
-lines = contents.splitlines()
 
-print(lines)
-
-print(sorted(lines)) # the syntax for sorted()
-
-lines.sort() # the syntax for sort()
-print(lines)
+try:
+    contents = Path('C:/home/misc/file.txt').read_text() # this is called method chaining
+    lines = contents.splitlines()
+    
+    print(lines)
+    
+    print(sorted(lines)) # the syntax for sorted()
+    
+    lines.sort() # the syntax for sort()
+    print(lines)
+except:
+    print("Coulnd't find a file")
 
 # again: the difference between sort and sorted:
 # sort is a method of the list class and can only be used with them, it modifies the actual list and returns None
@@ -659,15 +667,16 @@ print(lines)
 
 # 01: the path of the file you want to write
 
-write_path = Path('c:/home/misc/write_python.txt')
-
-write_contents = "This is a file.\n"
-write_contents += "That is being writting.\n"
-write_contents += "Right now.\n"
-write_contents += "Over me.\n"
-write_contents += "Shooot!.\n"
-
-write_path.write_text(write_contents)
+try: 
+    write_path = Path('c:/home/misc/write_python.txt')
+    write_contents = "This is a file.\n"
+    write_contents += "That is being writting.\n"
+    write_contents += "Right now.\n"
+    write_contents += "Over me.\n"
+    write_contents += "Shooot!.\n"
+    write_path.write_text(write_contents)
+except: 
+    print("Couldn't find the file.")
 
 ############ - HOW TO WRITE A FILE - ################
 
@@ -693,16 +702,17 @@ except:
 # we can use try-except blocks between a if-else block
 
 # so, the basic behavior is: without a try-except block, python stops running the program, with it the program continuous
-
 try:
-    my_text = Path("C:/home/misc/write_python.txt")
+    try:
+        my_text = Path("C:/home/misc/write_python.txt")
+    except:
+        print("ERROR: This file doesnt exist.")
+    else:
+        file_read = my_text.read_text()
+        words = file_read.split()
+        print(f"This file {my_text} has about {len(words)} words.")
 except:
-    print("ERROR: This file doesnt exist.")
-else:
-    file_read = my_text.read_text()
-    words = file_read.split()
-    print(f"This file {my_text} has about {len(words)} words.")
-
+    print("Couldn't find a file.")
 # storing data using json
 
 import json
@@ -718,3 +728,5 @@ else:
 
 # this is a useful way to store data generated by the users
 # the json blends well with pythons' data structures
+
+
