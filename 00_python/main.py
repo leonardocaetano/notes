@@ -523,15 +523,39 @@ albums('dsotm', 'abbey_road', 'mbdtf')
 
 # CHAPTER 9: CLASSES
 
+# OBS: A class is a grouping of data and functions
+# in python, we call the data ATTRIBUTES
+# and the functions are called METHODS
+
+# the 'pythonic' way of writing classes is using CamelCase for the class name, the methods can be snake_case
+
+# you can do the following to create a stub
+
+class Employee:
+    pass
+
+emp_01 = Employee()
+emp_02 = Employee()
+
 # the book tries to evangelise OOP here, 
 # so, in OOP you create classes "that represents real-world _things_" and objects based on these classes 
 # when you create a class you define the general behavior that a whole category of objects will have
 
+# in python, a class doesnt do anything. don't wait for a magic lightbulb to light. 
+# all what they are is a way to help you ORGANIZE the code, but it don't do anything by itself
+
+# when you use self, all you are doing is making the attributes scope available to the entire class
+
+# and remember, you can think of the __init__ class a constructor, which means that everything in it is executed when an instance of the class gets created
+
 # when you create a object over a class, this is called _instantiation_
 # and you work with instances of a class
 
+print(" ==================== CLASSES ===================== ")
+
 class dog: # THE FUNCTION THAT IS PART OF A CLASS IS CALLED A METHOD
     # the __init()__ method is a special one that runs automatically everytime we __CREATE__ a object (or a new instance) based on a class
+    # we can think of it as the constructor (C++)
     # the self parameter is also special and required, it needs to be the first one
     # every variable prefixed with self will be accessible for every method in the class
     def __init__(self, name, age): 
@@ -560,19 +584,47 @@ my_other_dog = dog("Pedro", 15)
 # we always can start a new class from scratch, but we are also able to inherit a child class that provides specialized functionality
 
 class electric_dog(dog):
+
+    battery_upgrade = 2 # this is class variable, something that is in the scope of the whole class
+
+    number_of_electric_dogs = 0
+
     def __init__(self, name, age, battery):
         self.battery = battery
+        electric_dog.number_of_electric_dogs += 1 # ofc, we can do that, remember constructors!!
+
         super().__init__(name, age) 
     def battery_information(self):
         print(f"{self.name} has {self.age} and his battery points is {self.battery}.")
     def roll_over(self):
         print(f"{self.name} has {self.age} and now is rolling over even more!")
+    def increase_battery(self):
+        self.battery *= electric_dog.battery_upgrade # to access the class variable we need the class itself or an instance of it (and by instance we mean using self itself)
+    def print_total(self):
+        print(f"Total of electric_dogs: {electric_dog.number_of_electric_dogs}")
+
 
 my_e_dog = electric_dog("Joaquim", 20, 65)
 
 my_e_dog.sit()
-my_e_dog.roll_over()
 my_e_dog.battery_information()
+my_e_dog.increase_battery()
+my_e_dog.battery_information()
+
+my_e_dog.roll_over()
+electric_dog.roll_over(my_e_dog) # note that this line and the one above does the same, it is just different idioms
+                                       # the only difference is that the first one gets transformed into the second one by the compiler before running
+
+# still concerning the class variables
+
+# we can do this:
+electric_dog.battery_upgrade = 30
+# and that will apply to all instance of that class
+
+# if you want to modify this for just one object
+my_e_dog.battery_upgrade = 40
+# do this instead
+
 
 # super() thing on the __init__ method is a special function that allows you to call a method from a parent class. the name super comes from calling a
 # convention of calling a parent class a superclass and a child subclass 
