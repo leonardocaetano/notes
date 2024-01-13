@@ -545,6 +545,7 @@ emp_02 = Employee()
 # all what they are is a way to help you ORGANIZE the code, but it don't do anything by itself
 
 # when you use self, all you are doing is making the attributes scope available to the entire class
+# you can also think of self as a way to refer to the instance that was created using the class
 
 # and remember, you can think of the __init__ class a constructor, which means that everything in it is executed when an instance of the class gets created
 
@@ -624,6 +625,11 @@ electric_dog.battery_upgrade = 30
 # if you want to modify this for just one object
 my_e_dog.battery_upgrade = 40
 # do this instead
+
+# HELPER METHODS
+
+# helper methods are meant to be used inside a class, but not outside of it. its purporse is to organize code better
+# a single underline on the beggining of the method's name is enough to declare a helper method
 
 
 # super() thing on the __init__ method is a special function that allows you to call a method from a parent class. the name super comes from calling a

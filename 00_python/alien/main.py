@@ -16,13 +16,10 @@ import pygame
 from settings import Settings
 from ship     import Ship
 
-# random constants
-
-WINDOW_TITLE = "Alien Invasion"
-ASSET_NOT_FIND_ERROR = "Error: game assets not found. Make sure to get them and put it on the assets folder."
-
 # overall class that manages game assets and behavior
 class AlienInvasion:
+    WINDOW_TITLE = "Alien Invasion"
+
     def __init__(self):
         #initializes the game and create game resources
         pygame.init()
@@ -37,7 +34,7 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_widht, self.settings.screen_height))
 
         # this sets the window title
-        pygame.display.set_caption(WINDOW_TITLE)
+        pygame.display.set_caption(AlienInvasion.WINDOW_TITLE)
 
         # set the background color
         self.bg_color = (self.settings.bg_color)
@@ -47,30 +44,41 @@ class AlienInvasion:
 
     # starts the main loop of the game
     def run_game(self):
-
         while True:
-            # watch for keyboard and mouse input aka a event loop that listen to events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: # this is the event loop checking for when the user quits (aka closes the screen)
-                    sys.exit()
-
-            # redraw the screen on each time loop iteration
-            self.screen.fill(self.settings.bg_color)
-
-            # imports the ship class
-            self.ship.blitme()
-
-            # make the most recently drawn screen visible
-            pygame.display.flip()
-
+            self._check_events()
+            self.ship.update()
+            self._update_screen()
             # controls the frame rate
             self.clock.tick(self.settings.refrash_rate)
 
+    def _check_events(self):
+        # watch for keyboard and mouse input aka a event loop that listen to events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: # this is the event loop checking for when the user quits (aka closes the screen)
+                sys.exit()
+            # moves the ship on the 2D plane
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+                if event.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+                if event.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
+
+    def _update_screen(self):
+        # redraw the screen on each time loop iteration
+        self.screen.fill(self.settings.bg_color)
+        # imports the ship class
+        self.ship.blitme()
+        # make the most recently drawn screen visible
+        pygame.display.flip()
 
 if __name__ == '__main__':
     # makes a game instance
     ai = AlienInvasion()
-
     # runs the game
     ai.run_game()
 
