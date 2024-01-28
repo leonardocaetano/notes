@@ -27,3 +27,16 @@ print(chr(231))
 print(bin(1))
 print(bin(255))
 print(bin(256))
+
+# ====== 03 - python program strucutre
+# yeah, you need a text editor and a compiler...
+# and yeah... python has libraries....
+
+import random
+import time
+
+for x in range(10):
+    print(f"n: {x} = {random.randint(1, 99)}")
+    print("generating random numbers is hard... wait a sec...")
+    #time.sleep(5)
+    
