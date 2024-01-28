@@ -3,6 +3,9 @@
 
 \usepackage{hyperref} % this generates the bookmarks for PDFs
 \usepackage[english]{babel}
+\usepackage{amsfonts} % for math sets letters
+\usepackage{amsmath} % for general math stuff
+\usepackage{amssymb} % for general math stuff
 \usepackage{blindtext} % generates filler text
 \usepackage{paralist} % for the compactenum and compactlist procedures
 % ====== MY MACROS
@@ -12,7 +15,8 @@
 \newcommand{\im}[1]{{\(#1\)}}
 \newcommand{\cm}[1]{{\[#1\]}} % remember that when you want to do center math you don't need to have \\ on EOL
 \newcommand{\head}[1]{\textnormal{\textbf{#1}}}
-
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}[thm]{Definition}
 % ====== MY MACROS
 
 \title{\LaTeX\ introduction}
@@ -63,12 +67,12 @@ And as you can see, we need a \footnote{footnote now. We really do. Remember tha
     \item asm 
     \item Rust
 \end{enumerate}
-Note that \textit{enumerate} and \textit{itemize} has the same syntax.
+Note that \texttt{enumerate} and \texttt{itemize} has the same syntax.
 \begin{description}
     \item[C89] is the best one.
     \item[C23] is a Rust pysop.
 \end{description}
-We can also use \textit{compactenum} and \textit{compactitem} if we use the package \textit{paralist}.\\
+We can also use \texttt{compactenum} and \texttt{compactitem} if we use the package \texttt{paralist}.\\
 \begin{compactenum}
     \item C
         \begin{compactitem}
@@ -91,7 +95,7 @@ This looks like a PITA. It probably is.
     \> Author \> : \> Leslie da Silva \\
     \> Website \> : \> www.pudim.com
 \end{tabbing}
-We can also have more complex tables with \textit{tabular}.\\\\
+We can also have more complex tables with \texttt{tabular}.\\\\
 \begin{tabular}{|c|c|c|} %ccc means three centered columns, | means vertical line
     \hline
     \head{Text} & \head{Text} & \head{Text}\\
@@ -106,5 +110,61 @@ We can also have more complex tables with \textit{tabular}.\\\\
 Yeah, this is possible. But whatever.
 \newpage
 \section{How to write math}
-Now we are about to start the good shit.
+Now we are about to start the good shit.\\
+The quadratic equation
+\begin{equation}
+    \label{quad}
+    ax^2 + bx + c = 0
+\end{equation}
+where \im{a, b} and \im{c} are constants and \im{ a \neq 0}, has two solutions for the variable \im{x}:
+\begin{equation}
+    \label{root}
+    x_{1, 2} = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.
+\end{equation}
+If the \emph{disciminant} \im{\Delta} with \cm{\Delta = b^2 - 4ac} is zero, then the equation (\ref{quad}) has a double solution:
+(\ref{root}) becomes \cm{x = - \frac{b}{2a}.}
+\LaTeX\ is full of operators, such as log, cos and so on....
+\cm{\lim_{n=1, 2, \ldots} a_n \qquad \max_{x<X} x }
+\cm{\mathbb{A} = 1, 2, 3...}
+\begin{gather}
+    x + y + z = 0\\
+    y - z = 1
+\end{gather}
+You can use the \texttt{gahter} package to deal with a system of equations.\\
+You can also go to \url{https://detexify.kirelabs.org/classify.html} to manually draw symbols and get the associated command.\\
+If you need to use symbols, you can use the \texttt{siunitx} package, but you need to read some documentation first.\\
+In \LaTeX, math written inline is called text style, and the math written outside of if is called display style.\\
+So, this is a inline example:
+\im{
+\int_a^b \! f(x) \, dx = \lim_{\Delta x \rightarrow 0}
+\sum_{i=1}^{n} f(x_i) \,\Delta x_i
+}\\
+And this is a display style example:
+\cm{
+\int_a^b \! f(x) \, dx = \lim_{\Delta x \rightarrow 0}
+\sum_{i=1}^{n} f(x_i) \,\Delta x_i
+}
+\subsection{Building Math Strucutures}
+Lets start with how to create arrays
+\cm{
+    A = \left(
+        \begin{array}{cc}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22}
+        \end{array}
+        \right)
+}
+This is the vanilla way. We can also use the \texttt{amsmath} way of doing things. Note that this packages has a slighty different formating. It is not good to mix them up.
+\cm{
+    \binom{n}{k} = \frac{n!}{k!(n-k)!}
+}
+We can also have a \im{\overline{\Delta}} and \im{\underbrace{1 + 1 + \cdots + 1}_n}.
+We also are able to have mathy accents \im{\widehat{\Delta}}
+\begin{thm}
+    This is a new theorem.
+\end{thm}
+\begin{dfn}
+    And this is a new definition.
+\end{dfn}
+Of course you can write a equation inside if and so on... This is just for personal note taking. Don't make it that much complicated.
 \end{document}

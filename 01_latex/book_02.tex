@@ -1,0 +1,33 @@
+\documentclass[a4paper, 12pt]{book}
+\usepackage[a4paper, left=0.5in, right=0.5in, top=0.8in, bottom=0.8in]{geometry}
+
+\usepackage{hyperref} % this generates the bookmarks for PDFs
+\usepackage[english]{babel}
+\usepackage{amsfonts} % for math sets letters
+\usepackage{amsmath} % for general math stuff
+\usepackage{amssymb} % for general math stuff
+\usepackage{blindtext} % generates filler text
+\usepackage{paralist} % for the compactenum and compactlist procedures
+% ====== MY MACROS
+
+\newcommand{\TUG}{\TeX\ Users Group}
+\newcommand{\kw}[2][\bfseries]{{#1#2}}
+\newcommand{\im}[1]{{\(#1\)}}
+\newcommand{\cm}[1]{{\[#1\]}} % remember that when you want to do center math you don't need to have \\ on EOL
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}[thm]{Definition}
+% ====== MY MACROS
+
+\title{TikZ introduction}
+\author{Me}
+\date{Jan 28, 2024}
+
+\addtocontents{toc}{\protect{\pdfbookmark[0]{\contentsname}{toc}}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Introduction}
+Hello.
+\end{document}
