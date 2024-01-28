@@ -1,9 +1,21 @@
-\documentclass[a4paper, 12pt]{article}
-\usepackage[left=0.5in, right=0.5in, top=0.8in, bottom=0.8in]{geometry}
+\documentclass[a4paper, 12pt]{book}
+\usepackage[a4paper, left=0.5in, right=0.5in, top=0.8in, bottom=0.8in]{geometry}
 
 \usepackage{hyperref} % this generates the bookmarks for PDFs
+\usepackage[english]{babel}
+\usepackage{blindtext} % generates filler text
+\usepackage{paralist} % for the compactenum and compactlist procedures
+% ====== MY MACROS
 
-\title{\LaTeX \: introduction}
+\newcommand{\TUG}{\TeX\ Users Group}
+\newcommand{\kw}[2][\bfseries]{{#1#2}}
+\newcommand{\im}[1]{{\(#1\)}}
+\newcommand{\cm}[1]{{\[#1\]}} % remember that when you want to do center math you don't need to have \\ on EOL
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+
+% ====== MY MACROS
+
+\title{\LaTeX\ introduction}
 \author{Me}
 \date{Jan 27, 2024}
 
@@ -11,10 +23,11 @@
 
 \begin{document}
 \maketitle
-\newpage
 \tableofcontents
-\newpage
-\section{Introduction}
+\chapter*{Preface}
+\blindtext[20]
+\chapter{Introduction}
+\section{Some basics about \LaTeX}
 Latex is not word processing, but typesetting. That means you have to provide precise instructions with text.\\
 Statement \#1:
 50\% of \$100 equals to \$50.\\
@@ -22,6 +35,76 @@ More special symbols are \&, \_, \{ and \}.\\
 Text can be \emph{emphasized.}\\
 Besides from \textit{italics}, words can be \textbf{bold}, \textsl{slanted}, or typeset in \textsc{Small Caps}.\\
 Such commands can be \textit{\textbf{nested}}.\\
-\emph{See how \emph{emphasizing} looks when nested.} \(1+x^2\) \[1+x^2\] % () for inline math, [] for center math, $$ is old
-
+\emph{See how \emph{emphasizing} looks when nested.}\\ % \(1+x^2\) \[1+x^2\] % () for inline math, [] for center math, $$ is old
+\texttt{This is a monospaced font. Also called typewriter font.}\\
+A curly brace means in \LaTeX\ that we about to start a group.\\ 
+\tiny We \scriptsize can \footnotesize also \small do \normalsize this.\\
+The \TUG\ is a result of a custom macro. Use them!\\
+Macros can also receive \kw{arguments}.
+\cm{1+2=3}
+That makes it easier when you want to do \im{2^3=8} for example.
+\newpage
+\section{How to write "books"}
+\blindtext[20]
+And as you can see, we need a \footnote{footnote now. We really do. Remember that \im{3^2 = 9}.}
+\newpage
+\section{How to write lists}
+\begin{enumerate}
+    \item C
+        \begin{itemize}
+            \item C89
+            \item C99
+            \item C11
+            \item C17
+            \item C23
+        \end{itemize}
+    \item C++
+    \item Pascal
+    \item asm 
+    \item Rust
+\end{enumerate}
+Note that \textit{enumerate} and \textit{itemize} has the same syntax.
+\begin{description}
+    \item[C89] is the best one.
+    \item[C23] is a Rust pysop.
+\end{description}
+We can also use \textit{compactenum} and \textit{compactitem} if we use the package \textit{paralist}.\\
+\begin{compactenum}
+    \item C
+        \begin{compactitem}
+            \item C89
+            \item C99
+            \item C11
+            \item C17
+            \item C23
+        \end{compactitem}
+    \item C++
+    \item Pascal
+    \item asm 
+    \item Rust
+\end{compactenum}
+\newpage
+\section{How to create tables}
+This looks like a PITA. It probably is.
+\begin{tabbing}
+    \emph{Info:} \= Software \= :  \= \LaTeX \\
+    \> Author \> : \> Leslie da Silva \\
+    \> Website \> : \> www.pudim.com
+\end{tabbing}
+We can also have more complex tables with \textit{tabular}.\\\\
+\begin{tabular}{|c|c|c|} %ccc means three centered columns, | means vertical line
+    \hline
+    \head{Text} & \head{Text} & \head{Text}\\
+    \hline
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text\\
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text\\
+    \verb|\textrm| & \verb|\rmfamily| & \rmfamily Example text\\
+    \hline
+\end{tabular}
+\newpage
+\section{How to create references}
+Yeah, this is possible. But whatever.
+\newpage
+\section{How to write math}
+Now we are about to start the good shit.
 \end{document}
