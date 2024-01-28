@@ -1,13 +1,19 @@
 \documentclass[a4paper, 12pt]{article}
+\usepackage[left=0.5in, right=0.5in, top=0.8in, bottom=0.8in]{geometry}
 
-\usepackage[a4paper, margin=0.5in]{geometry}
+\usepackage{hyperref} % this generates the bookmarks for PDFs
 
-\title{Latex introduction}
+\title{\LaTeX \: introduction}
 \author{Me}
 \date{Jan 27, 2024}
 
+\addtocontents{toc}{\protect{\pdfbookmark[0]{\contentsname}{toc}}}
+
 \begin{document}
 \maketitle
+\newpage
+\tableofcontents
+\newpage
 \section{Introduction}
 Latex is not word processing, but typesetting. That means you have to provide precise instructions with text.\\
 Statement \#1:
@@ -16,5 +22,6 @@ More special symbols are \&, \_, \{ and \}.\\
 Text can be \emph{emphasized.}\\
 Besides from \textit{italics}, words can be \textbf{bold}, \textsl{slanted}, or typeset in \textsc{Small Caps}.\\
 Such commands can be \textit{\textbf{nested}}.\\
-\emph{See how \emph{emphasizing} looks when nested.}
+\emph{See how \emph{emphasizing} looks when nested.} \(1+x^2\) \[1+x^2\] % () for inline math, [] for center math, $$ is old
+
 \end{document}
