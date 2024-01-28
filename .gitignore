@@ -7,3 +7,5 @@
 *.pdf
 __pycache__/
 .pytest_cache/
+*.out
+*.toc
