@@ -1,7 +1,7 @@
 weekdays:
 
 wake, do exercices, go to work 05:00
-go back home                   12:00
+go back home                   12:40
 start studying                 14:00
 go to sleep                    21:00
 
@@ -9,8 +9,8 @@ weekends:
 
 wake, do exercices  05:00
 start studying      06:30
-eat                 12:30
+eat                 12:00
 go back to studying 13:00
 go to sleep         21:00
 
-total per week: 62h
+total per week: 61h

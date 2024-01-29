@@ -1,0 +1,7 @@
+For math, you don't need to be a algebraic computational expert. Mathematica is there for you.
+
+What you need to learn:
+- You need to understand the mathematical structures really well (by intuition, and reading explanations)
+- You need to understand proofs. How to make them. And work out some of the classics by yourself.
+
+The super long list of exercices are mostly a waste of time. Go solve problems with programming instead.

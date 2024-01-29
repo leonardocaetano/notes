@@ -1,0 +1,242 @@
+So... Wolfram Mathematica!
+
+The first thing to realise is that the examples we are about to work through are made in a simplistic way to ensure that you are understanding whats going on. The real world is more complex then that.
+
+You can use mathematica as a calculator. You type a expression and press shift+enter.
+
+3 + 5
+
+57.1^100
+
+Inverse[{{1, 2}, {3, 4}}] // this one works out the inverse of a 2x2 matrix
+
+Mathematica can as well solve equations, integrate and so on.
+
+If you use a semi-colon (;) at the end of a expression, this tells mathematica to not print out the result of the computation
+
+you can also assign the result of a computation to a variable
+
+m = 5 + 3; // this stores 8 to m and don't print anything
+
+Mathematica can work with really big numbers without a problem.
+
+N[Pi, 10000] // this prints out 10k digits of pi
+
+You can refer to the immediate previous result using % inside the next 'function' call
+
+// isn't a comment. you can use to pass the short command to show a shortned version of the result
+
+PartitionsP[10^9] // Short
+
+Mathematica has built-in the largest (?) collection of computational algorithms. And you can access them.
+
+In each case. Mathematica automatically chooses them.
+
+For example. Integration is trivial for it.
+
+And yes. Mathematica can export to LaTeX.
+
+Lmao, it can even work as a server and provide webpages and other services.
+
+Spaces denotes multiplication.
+
+You can tell mathematica to output an approximate numerical result. Just like a normal calculator. with //N
+
+Sqrt[x], Log[b, x], n!, Abs[x], Random[], FactorInteger[n] are some of the functions available.
+
+All names of built-in functions starts with Capital letters.
+
+Some constants:
+
+Pi, E, Degree (pi/180), I (sqrt(-1)), Infinity
+
+All constant starts with Capital letters as well.
+
+It is also possible to work with complex numbers.
+
+Some ways that this software works:
+
+- Arguments of functions are giving using square brackets []
+- you can enter numbers in scientific notation using the following: 2.5*^-4
+- () are used to indicate the grouping of terms.
+
+Mathematica has this __notebook__ interface where you can work out large mathematical computations
+
+The Esc key are used to input some especial symbols inside it.
+Thats because you arent limted to simple text inputs, but also can do superscripts, special characters, built-up fractions and so on.
+
+And it is possible for mathematica to produce output that matches traditional math notation. We will see how in the future.
+
+====== 1.2 Building Up Calculations
+
+% the last result
+%% next to last
+%%% ...
+%n output number n
+
+if you are in a notebook interface, you need to be careful (because you can insert and delete anyware).
+as you know, you can define variables....
+you can use
+x=.
+or 
+Clear[x]
+to clear them
+
+You can define lists of objects...
+in = {3, 5, 1}^2 + 1
+out = {10, 17, 2}
+
+Part[list, i] or list[[i]] provides the i-th element of a list
+Part[list, {i, j, ...}] or list[[{i, j, ...}]] provides the i-th, j-th.... element of a list
+
+the four kinds of bracketing
+
+() grouping
+f[x] functions
+{} lists
+v[[i]] double square brackets for indexing
+
+you can do several operations on a single input, using the ; operator. remember that this also surpasses the output
+
+====== 1.3 The Structure of Mathematica
+
+mathematica kernel - actually performs computations
+mathematica front end - interacts with the user
+
+we do also have different interfaces (or front ends)
+
+notebook interface
+text-based interface
+MathLink interface - communication with other programs
+
+You can even write C code that interacts with it
+
+In notebooks, these units of inputs called cells can be nested, open or close. These are the things on the right of the monitor.
+
+You also have programming habilities like having buttons that performs actions
+
+if you do ?Log you will have information about it
+??Log for extra information
+
+Do ??Solve and ??Reduce
+
+Solve is more used for algebraic and transcedental equations. 
+Reduce is more broader and can be used with systems of equations and inequalities.
+
+Mathematica is a extensible system as well. It supports packages.
+If you need something specialized, that is not provided by default. You can look up for them.
+
+A lot of functions embed in Mathematica was written in package form. But already preloaded by default. 
+The discrete math example in the book has already been incorporated into the main program for example.
+
+You can turn on and off system messages
+
+Off[Function::tag]
+
+Ex:
+
+Off[Sqrt::argx]
+
+Use On[] to bring it back.
+
+If the calculation is taking too long, just use Alt-Comma
+
+====== 1.4 - Algebraic Calculations
+
+Numerical computation: 3 + 62
+Symbolic computations: 3x - x + 2
+
+It can do both
+
+Apart from Solve and Reduce. You can also use Expand[] and Factor[]
+
+Expand just multiplies out products and powers
+Factor does essentialy the opposite
+
+It is super important that you put the parentheses in the right place
+
+When you type in an expresion, Mathematica automatically applies its large repertoire of rules for transforming expressions.
+These rules include the standart rules of algebra, such as x - x = 0, together with much more sophisticated rules involving higher
+mathematical functions.
+
+You can do stuff like
+
+1 + 2x /. x -> 3
+
+It returns 7. It is telling the software that you need to replace x with 3
+
+You can also do
+
+1 + x + x^2 /. x -> 2 - y
+
+This tells mathematica to replace x with 2 - y
+
+Of course you can do 
+x^2 - 9 /. % 
+or
+% /. 3
+Just be careful
+
+Some algebraic expressions
+
+Solve
+Reduce
+Expand
+ExpandAll -- apply Expand everywhere (sometimes Expand can leave the denominators in factored form)
+Together -- put all terms over a common denominator
+Apart -- Separate into term with simple denominators
+Cancel - cancel common factors between numerators and denominators
+Factor
+Simplify - uses standard algebraic transformations
+FullSimplify - uses a wide range of transformations
+
+Obs: simplify exists because the factored form is not always the simplest
+
+You can use Simplify to "clean" the expression before moving on.
+
+These simplify expressions can be super slow for long and complex expressions. Use your knowledge to guide the program.
+
+For polynomials and rational expressions mathematica already has a lot of functions for deal with them.
+For higher math, theres even more.
+
+Here's a few more examples:
+
+TrigExpand[]
+TrigFactor[]
+TrigReduce[]
+TrigToExp[]
+ExpToTrig[]
+
+You need to be aware when you use these functions. Look at the domain of these expressions.
+A result will not be possible for a generic domain (like all Reals)
+
+The transformations on expressions done by functions like Expand and Factor are always correct for whatever expression. 
+
+It is possible to perform transformations that are only correct for some possible values of symbolic variables.
+That's why Simplifying with Asumptions exists, PowerExpand exists with similar reasons.
+
+Ex:
+
+Simplify[Sqrt[x^2], x > 0]
+
+Now we can use Element[] with Simplify, which is a function that allows you to state that x is an element of the domain dom
+
+Simplify[Sqrt[x^2], Element[x, Reals]]
+
+Possible arguments for Element[] are
+
+Reals
+Integers
+Primes
+
+THE LIMITS OF MATHEMATICA
+
+Obs: from version 5 of the book to the current 13, a lot may have changed.
+
+If you do Expand[(1+x)^(10^10)] you computer will hang forever. Not even the most powerful computer in the world can do it.
+
+Even with a short input and expected short output, the middle computations can be too expansive as well. Sometimes is wise to break things apart.
+
+You can also user Meter, Second, Mile, etc... with it.
+
+====== 1.5 - Symbolic Mathematics
